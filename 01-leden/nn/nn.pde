@@ -40,9 +40,7 @@ class Network{
         for(int iii = 0 ; iii < tmplB.neurons.size();iii++){
         Neuron n2 = (Neuron)tmplB.neurons.get(iii);
         connections.add(new Connection(ii,n1,iii,n2));
-        
         }
-
       }
     }
 
@@ -91,19 +89,17 @@ class Connection{
     idB=_idB;
     A=_A;
     B=_B;
-    weight = 0.5;
+    weight = random(0,100)/100.0;
   }
 
 }
 
 class Neuron{
-
   int layerNo;
+  float sum;
 
   Neuron(int _layerNo){
     layerNo = layerNo;
+    sum = 0;
   }
-
-
-
 }

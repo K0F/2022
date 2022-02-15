@@ -16,22 +16,22 @@ void setup()
 	
     // replace with your own postgresql-account.
     //
-    String user     = "postgres";
-    String pass     = "cigareta";
+    String user     = "demodb";
+    String pass     = "demodb";
 	
     // name of the database to use
     //
-    String database = "testdb";
+    String database = "demodb";
     
     // connect to database on "localhost"
     //
-    pgsql = new PostgreSQL( this, "localhost", database, user, pass );
+    pgsql = new PostgreSQL( this, "avo-swamp.cro.cz", database, user, pass );
     
     // connected?
     if ( pgsql.connect() )
     {
         // query the number of entries in table "weather"
-        pgsql.query( "SELECT COUNT(*) FROM weather" );
+        pgsql.query( "SELECT COUNT(*) FROM test" );
         
         // results found?
         if ( pgsql.next() )
@@ -40,8 +40,7 @@ void setup()
             println( "number of rows in table weather: " + pgsql.getInt(1) );
         }
         
-        // now let's query for last 10 entries in "weather"
-        pgsql.query( "SELECT * FROM weather LIMIT 10" );
+        pgsql.query( "SELECT * FROM test LIMIT 10" );
         
         // anything found?
         while( pgsql.next() )
