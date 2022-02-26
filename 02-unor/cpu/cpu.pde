@@ -22,6 +22,8 @@ Sat Feb 26 04:40:38 PM CET 2022
 
 
 Filter filter;
+boolean RENDER = true;
+
 
 void setup(){
   size(240,180);
@@ -33,12 +35,14 @@ void setup(){
 
 
 void draw(){
-  fill(127,15);
+  fill(127,4);
   rect(width/2,height/2,width,height);
 
   filter.draw();
 
-
+  if(RENDER){
+    saveFrame("frame#####.png");
+  }
 }
 
 
@@ -76,15 +80,18 @@ class Filter{
   void draw(){
     noStroke();
 
-    if(frameCount%2==0)
+    if(frameCount%50==0)
       filter.randomize();
     else
       filter.opak();
 
     for(int i = 0; i< set.length;i++){
-      fill(set[i]?255:0);
+      fill(set[i]?255:0,((sin((time+i)*TWO_PI)+cos((time+i)*TWO_PI))+1)*127.0 );
       rect(i*5,((frameCount*5)%height),5,5);
     }
+
+    time+=1/frameRate;
+  
 
 
   }
