@@ -21,24 +21,24 @@ Sat Feb 26 04:40:38 PM CET 2022
 */
 
 
-Filter filter;
-boolean RENDER = true;
-
+Combination comb;
+boolean RENDER = false;
+float W;
 
 void setup(){
-  size(240,180);
+  size(480,360);
+  W = width/48.0;
+  comb = new Combination();
 
-  filter = new Filter();
+  textFont(createFont("Semplice Regular",8,false));
 
   rectMode(CENTER);
 }
 
 
 void draw(){
-  fill(127,4);
-  rect(width/2,height/2,width,height);
 
-  filter.draw();
+  comb.draw();
 
   if(RENDER){
     saveFrame("frame#####.png");
@@ -50,13 +50,13 @@ void draw(){
 
 //////////////////////////////////////
 
-class Filter{
+class Combination{
   boolean[] set;
   boolean active;
   double val;
   float time;
 
-  Filter(){
+  Combination(){
     set = new boolean[48];
     active = false;
     val = 0;
@@ -80,21 +80,16 @@ class Filter{
   void draw(){
     noStroke();
 
-    if(frameCount%50==0)
-      filter.randomize();
+    if(frameCount%3==0)
+      comb.randomize();
     else
-      filter.opak();
+      comb.opak();
 
     for(int i = 0; i< set.length;i++){
-      fill(set[i]?255:0,((sin((time+i)*TWO_PI)+cos((time+i)*TWO_PI))+1)*127.0 );
-      rect(i*5,((frameCount*5)%height),5,5);
+      fill(set[i]?255:0);
+      rect(map(i,0,set.length,width/2-W,width/2+W),height/2,1,W);
     }
 
     time+=1/frameRate;
-  
-
-
   }
-
-
 }

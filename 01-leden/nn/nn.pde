@@ -38,8 +38,8 @@ class Network{
       for(int ii = 0 ; ii < tmplA.neurons.size();ii++){
         Neuron n1 = (Neuron)tmplA.neurons.get(ii);
         for(int iii = 0 ; iii < tmplB.neurons.size();iii++){
-        Neuron n2 = (Neuron)tmplB.neurons.get(iii);
-        connections.add(new Connection(ii,n1,iii,n2));
+          Neuron n2 = (Neuron)tmplB.neurons.get(iii);
+          connections.add(new Connection(ii,n1,iii,n2));
         }
       }
     }
