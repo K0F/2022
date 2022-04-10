@@ -40,7 +40,7 @@ Some of the videos and rendered outputs are available @ [YouTube](https://www.yo
 
 Clone them all /w simple command
 ```
-for i in 20{07,08,09,10,11,12,13,14,15,16,17,18,19,20,21}; do echo $i; git clone
+for i in 20{07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22}; do echo $i; git clone
 git@github.com:K0F/$i.git ; done
 ```
 
