@@ -1,0 +1,13 @@
+#!/bin/bash
+SKETCH=`pwd`
+OUTPUT=/tmp/processingMess/
+
+killall processing-java || echo No instances running, good.
+cd /tmp/
+for i in `ls | grep temp`; do rm -r $i ; done
+cd /home/kof/processing && ./processing-java --sketch="$SKETCH" --output=$OUTPUT --force --run $*
+#cd /home/kof/src/processing/build/linux/work && ./processing-java --sketch="$SKETCH" --output=$OUTPUT --force --run
+#cd /home/kof/src/processing-3.3.6/ && ./processing-java --sketch="$SKETCH" --output=$OUTPUT --force --run
+#cd "/home/kof/src/processing-2.0b9" && ./processing-java --sketch="$SKETCH" --output=$OUTPUT --force --run
+cd $SKETCH
+
